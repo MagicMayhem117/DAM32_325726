@@ -13,9 +13,12 @@
       "backgroundColor": "#ffffff"
     },
     "ios": {
+      "bundleIdentidier": "com.vipsanmiguel.viptips",
       "supportsTablet": true
     },
     "android": {
+      "package": "com.vipsanmiguel.viptips",
+      "versionCode": 1,
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
