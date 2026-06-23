@@ -1,4 +1,4 @@
-import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image } from 'react-native';
+import { StyleSheet, Text, View, TextInput, Button, TouchableOpacity, Image, ScrollView, Linking } from 'react-native';
 import { useState } from 'react';
 
 
@@ -19,7 +19,12 @@ export default function App() {
     setBillTotal(billTotal.toFixed(2));
   }
 
+  const openMap = async () => {
+    await Linking.openURL("https://vipsanmiguel.com/map/");
+  }
+
   return (
+    <ScrollView>
     <View style={styles.container}>
       <View style={styles.imgView}>
         <Image source={require("./assets/logo.png")} style={styles.img}></Image>
@@ -68,7 +73,14 @@ export default function App() {
         <Text style={styles.label}>Tip total: ${tipTotal}</Text>
         <Text style={styles.label}>Bill total: ${billTotal}</Text>
       </View>
+
+    <View style={styles.mapContainer}>
+      <TouchableOpacity style={styles.map} onPress={() => openMap()}>
+        <Text style={styles.btnText}>Restaurant map</Text>
+      </TouchableOpacity>
     </View>
+    </View>
+    </ScrollView>
   );
 }
 
@@ -86,11 +98,20 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     width: "100%"
   },
+  mapContainer: {
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+    width: "100%",
+    marginTop: 10,
+    marginBottom: 40
+  },
   imgView: {
     width: "100%",
     height: "auto",
     marginBottom: "5%",
-    alignItems: "center"
+    alignItems: "center",
+    marginTop: 30
   },
   img: {
     resizeMode: "contain",
@@ -120,7 +141,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#f0f0f0",
     margin: 6,
     paddingHorizontal: 14,
-    paddingVertical: 10,
     minHeight: 48,
     alignItems: "center",
     justifyContent: "center",
@@ -150,7 +170,6 @@ const styles = StyleSheet.create({
   optionsContainer: {
     flexDirection: "row",
     justifyContent: "space-between",
-    marginBottom: "8%",
     flexWrap: "wrap",
   },
   button: {
@@ -164,5 +183,11 @@ const styles = StyleSheet.create({
     fontSize: 16,
     fontWeight: '800',
     color: '#fff',
+  },
+  map: {
+    borderRadius: 5,
+    paddingVertical: 6,
+    paddingHorizontal: 20,
+    backgroundColor: "#327435",
   },
 });
